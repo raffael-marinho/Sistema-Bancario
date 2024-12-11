@@ -30,4 +30,18 @@ public class Cliente {
 		this.cpf = cpf;
 	}
 	
+	public void adicionarConta(Conta conta) {
+		contas.add(conta);
+	    System.out.println("Conta " + conta.getNumeroConta() + " adicionada ao cliente " + nome);
+	}
+	
+	public void removerConta(Conta conta) {
+		if (contas.remove(conta)) {
+	        System.out.println("Conta " + conta.getNumeroConta() + " removida do cliente " + nome);
+	    } else {
+	        System.out.println("Conta não encontrada para o cliente " + nome);
+	    }
+	}
+	
+	
 }
