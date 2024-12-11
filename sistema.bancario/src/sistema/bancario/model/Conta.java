@@ -28,4 +28,36 @@ public class Conta {
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
+	
+	public void depositar(double valor) {
+		if(valor>0) {
+			saldo += valor;
+	        System.out.println("Depósito de R$" + valor + " realizado com sucesso!");
+		}else {
+	        System.out.println("O valor do depósito invalido.");
+		}
+	}
+	
+	public boolean sacar(double valor) {
+		if(valor>0 && valor<=saldo) {
+			saldo -= valor;
+	        System.out.println("Saque de R$" + valor + " realizado com sucesso!");
+	        return true;
+		}else {
+	        System.out.println("Saque não realizado. Saldo insuficiente ou valor inválido.");
+	        return false;
+		}
+	}
+	
+	public boolean transferir(double valor, Conta contaDestino) {
+	    if (this.sacar(valor)) {
+	        contaDestino.depositar(valor);
+	        System.out.println("Transferência de R$" + valor + " realizada para a conta " + contaDestino.getNumeroConta());
+	        return true;
+	    } else {
+	        System.out.println("Transferência não realizada.");
+	        return false;
+	    }
+	}
+
 }
