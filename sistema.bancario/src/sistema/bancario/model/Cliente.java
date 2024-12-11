@@ -42,7 +42,11 @@ public class Cliente {
 	        System.out.println("Conta não encontrada para o cliente " + nome);
 	    }
 	}
-
+	
+	public List<Conta> getContas() { 
+        return contas;
+    }
+	
 	@Override
 	public String toString() {
 		return "Cliente [nome=" + nome + ", cpf=" + cpf + "]";
