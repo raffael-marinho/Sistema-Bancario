@@ -26,14 +26,7 @@ public static void main(String[] args) {
 			
 			switch (opcao) {
 			case 1: {
-				String cpf;
-				String nome;
-				System.out.println("Insira o seu CPF: ");
-				cpf = sc.next();
-				System.out.println("Insira o seu nome: ");
-				nome = sc.next();
-				if(Cliente.validarNome(nome) && Cliente.validarCPF(cpf))
-					p.adicionarCliente(new Cliente(cpf, nome));								
+				cadastrarCliente(p, sc);
 				break;
 			}
 			case 2: {
@@ -66,4 +59,16 @@ public static void main(String[] args) {
 		}
 	}
 
+	private static void cadastrarCliente(Persistencia p, Scanner sc) {
+		sc.nextLine(); 
+    	System.out.print("Insira o CPF: ");
+    	String cpf = sc.nextLine();
+   
+    	if(Cliente.validarCPF(cpf) == true) {
+    		System.out.print("Insira o nome: ");
+    		String nome = sc.nextLine();
+    		p.adicionarCliente(new Cliente(cpf, nome));
+        }
+    }
+	
 }
