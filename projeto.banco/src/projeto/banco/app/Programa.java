@@ -130,8 +130,8 @@ public static void main(String[] args) {
 	                }                    
 	                case 2 -> depositarSaldo(cliente, sc);
                     case 3 -> saqueSaldo(cliente, sc);
-                    //case 4 -> transferirSaldo(cliente, sc);
-                    //case 5 -> saldoConta(cliente, sc);
+                    case 4 -> transferirSaldo(cliente, sc);
+                    case 5 -> saldoConta(cliente, sc);
                     //case 6 -> saldoContaTotal(cliente, sc);
                     //case 7 -> System.out.println(cliente.getContas());
                     //case 8 -> removerConta(cliente, sc);
@@ -170,4 +170,29 @@ public static void main(String[] args) {
         	System.out.println("Conta não encontrada. \n");
         }
     }
+	
+	private static void transferirSaldo(Cliente cliente, Scanner scanner) {
+        System.out.print("Digite o número da sua conta: ");
+        int numeroContaOrigem = scanner.nextInt();
+        System.out.print("Digite o número da conta de destino: ");
+        int numeroContaDestino = scanner.nextInt();
+        
+        Conta contaOrigem = cliente.localizarContaPorNumero(numeroContaOrigem);
+        Conta contaDestino = cliente.localizarContaPorNumero(numeroContaDestino);
+        
+        if (contaOrigem != null && contaDestino != null) {
+        	System.out.print("Digite o valor da transferência: ");
+        	float valor = scanner.nextFloat();
+        	contaOrigem.transferir(contaDestino, valor);
+        } else {
+        	System.out.println("Conta(s) não encontrada(s).");
+        }
+    }
+	
+	private static void saldoConta(Cliente cliente, Scanner scanner) {
+        System.out.print("Digite o número da conta: "); 
+        int numeroConta = scanner.nextInt();
+        Conta conta = cliente.localizarContaPorNumero(numeroConta);
+        System.out.println("O saldo da conta " + conta.getNumeroDaConta() + " é de :" +  conta.getSaldo());
+   }
 }
