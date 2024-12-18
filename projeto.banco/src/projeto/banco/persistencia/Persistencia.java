@@ -56,7 +56,7 @@ private ArrayList<Cliente> clientes;
 			clientes.set(index, c);
 			System.out.println("Cliente atualizado com sucesso");
 		}else
-			System.out.println("Cliente n�o localizado");
+			System.out.println("Cliente não localizado");
 	}
 
 }
