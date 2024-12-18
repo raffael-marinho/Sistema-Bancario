@@ -28,6 +28,22 @@ public class Cliente {
 		}
 	}
 	
+	public static boolean validarCPF(String cpf) {
+        if (cpf.length() != 11) {
+            System.out.println("CPF deve ter exatamente 11 caracteres.");
+            return false;  
+        }
+        return true;
+	}
+	
+	public static boolean validarNome(String nome) {
+        if (nome.length() >= 3 ) {
+            System.out.println("Nome deve ter mais de 3 caracteres e nao pode ser nulo");
+            return false;  
+        }
+        return true;
+	}
+	
 	public void removerConta(Conta velhaConta) {
 		if(contas.contains(velhaConta)) {
 			contas.remove(velhaConta);
