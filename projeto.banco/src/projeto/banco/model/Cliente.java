@@ -23,6 +23,7 @@ public class Cliente {
 		if(contas.contains(novaConta)) {
 			System.out.println("Conta já cadastrada");
 		} else {
+			contas.add(novaConta);
 			System.out.println("Conta cadastrada com sucesso");
 		}
 	}
