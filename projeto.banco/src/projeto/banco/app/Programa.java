@@ -2,13 +2,13 @@ package projeto.banco.app;
 
 import java.util.Scanner;
 
-import bancario.projeto.persistencia.PersistenciaCliente;
 import projeto.banco.model.Cliente;
+import projeto.banco.persistencia.Persistencia;
 
 public class Programa {
 public static void main(String[] args) {
 		
-		PersistenciaCliente p = new PersistenciaCliente();
+		Persistencia p = new Persistencia();
 		
 		Scanner sc = new Scanner(System.in);
 		
