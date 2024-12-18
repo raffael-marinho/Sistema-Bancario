@@ -124,18 +124,42 @@ public static void main(String[] args) {
                 int opcao = sc.nextInt();
 
                 switch (opcao) {
-	                case 1 -> {
+	                case 1: {
 	                    Conta novaConta = new Conta(cliente.getContas().size() + 1);
 	                    p.adicionarContaAoCliente(cpf, novaConta);
 	                }                    
-	                case 2 -> depositarSaldo(cliente, sc);
-                    case 3 -> saqueSaldo(cliente, sc);
-                    case 4 -> transferirSaldo(cliente, sc);
-                    case 5 -> saldoConta(cliente, sc);
-                    //case 6 -> saldoContaTotal(cliente, sc);
-                    //case 7 -> System.out.println(cliente.getContas());
-                    //case 8 -> removerConta(cliente, sc);
-                    case 9 -> voltar = true;
+	                case 2: {
+	                	depositarSaldo(cliente, sc);
+	                	break;
+	                }
+                    case 3: {
+                    	saqueSaldo(cliente, sc);
+                    	break;
+                    }
+                    case 4: {
+                    	transferirSaldo(cliente, sc);
+                    	break;
+                    }
+                    case 5: {
+                    	saldoConta(cliente, sc);
+                    	break;
+                    }
+                    case 6: {
+                    	saldoContaTotal(cliente, sc);
+                    	break;
+                    }
+                    case 7: {
+                    	System.out.println(cliente.getContas());
+                    	break;
+                    }
+                    case 8: {
+                    	removerConta(cliente, sc);
+                    	break;
+                    }
+                    case 9: { 
+                    	voltar = true;
+                    	break;
+                    }
                     default -> System.out.println("Opção inválida. \n");
                 }
             } catch (InputMismatchException e) {
@@ -194,5 +218,20 @@ public static void main(String[] args) {
         int numeroConta = scanner.nextInt();
         Conta conta = cliente.localizarContaPorNumero(numeroConta);
         System.out.println("O saldo da conta " + conta.getNumeroDaConta() + " é de :" +  conta.getSaldo());
+   }
+	
+	private static void saldoContaTotal(Cliente cliente, Scanner scanner) {
+   	 float saldoTotal = 0;
+   	    for (Conta conta : cliente.getContas()) {
+   	        saldoTotal += conta.getSaldo(); 
+   	    }
+   	    System.out.println("Saldo total de todas as contas de: " + saldoTotal);
+   }
+	
+	private static void removerConta(Cliente cliente, Scanner scanner) {
+   	 System.out.print("Digite o número da conta: "); 
+        int numeroConta = scanner.nextInt();
+        Conta conta = cliente.localizarContaPorNumero(numeroConta);
+        cliente.removerConta(conta);
    }
 }
