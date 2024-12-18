@@ -32,7 +32,8 @@ public static void main(String[] args) {
 				cpf = sc.next();
 				System.out.println("Insira o seu nome: ");
 				nome = sc.next();
-				p.adicionarCliente(new Cliente(cpf, nome));
+				if(Cliente.validarNome(nome) && Cliente.validarCPF(cpf))
+					p.adicionarCliente(new Cliente(cpf, nome));								
 				break;
 			}
 			case 2: {
@@ -40,9 +41,11 @@ public static void main(String[] args) {
 				String cpf;
 				System.out.println("Insira o seu CPF: ");
 				cpf = sc.next();
-				temp = new Cliente();
-				temp.setCpf(cpf);
-				p.removerCliente(temp);
+				if(Cliente.validarCPF(cpf)){
+					temp = new Cliente();
+					temp.setCpf(cpf);
+					p.removerCliente(temp);
+				}
 				break;
 			}
 			case 3: {

@@ -37,7 +37,7 @@ public class Cliente {
 	}
 	
 	public static boolean validarNome(String nome) {
-        if (nome.length() >= 3 ) {
+        if (nome.length() <= 3 ) {
             System.out.println("Nome deve ter mais de 3 caracteres e nao pode ser nulo");
             return false;  
         }
