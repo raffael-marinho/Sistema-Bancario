@@ -74,5 +74,50 @@ public class Conta {
 		return "Conta [numeroDaConta=" + numeroDaConta + ", saldo=" + saldo + ", dataAbertura=" + dataAbertura
 				+ ", status=" + status + "]";
 	}
+	
+	public void depositar(float quantia) {
+		if(status) {
+			if(quantia>0) {
+				this.saldo += quantia;
+				System.out.println("Deposito realizado com sucesso.");
+			} else {
+				System.err.println("Valor invalido para deposito.");
+			}
+		} else {
+			System.err.println("Operação não permitida. Não existe conta.");
+		}
+	}
 
+	public void sacar(float quantia) {
+		if(status) {
+			if(quantia>0) {
+				if(this.saldo >= quantia) {
+					this.saldo -= quantia;
+					System.out.println("Saque realizado com sucesso!");
+				} else {
+					System.err.println("Saldo insuficiente.");
+				}
+			} else {
+				System.err.println("Valor invalido para sacar.");
+			}
+		} else {
+			System.err.println("Operação não permitida. Não existe conta.");
+		}
+	}
+	
+	public void transferir(Conta outraConta, float quantia) {
+		if(status && outraConta.isStatus()) {
+			if(quantia <= 0) {
+				System.err.println("Valor invalido para transferencia.");
+			} else if(quantia<=saldo) {
+				this.saldo -= quantia;
+				outraConta.saldo += quantia;
+				System.out.println("Transferencia realizada com sucesso!");
+			} else {
+				System.err.println("Saldo insuficiente para realizar a transferencia.");
+			}
+		} else {
+			System.err.println("Operacao nao pode ser realizada, uma das contas ou as duas estão inativas");
+		}
+	}
 }
