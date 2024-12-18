@@ -11,22 +11,33 @@ private ArrayList<Cliente> clientes;
 		clientes = new ArrayList<>();
 	}
 	
-	public void adicionarCliente(Cliente c) {
-		if(clientes.contains(c)) {
+	public void adicionarCliente(Cliente novoCliente) {
+		if(clientes.contains(novoCliente)) {
 			System.out.println("Cliente já cadastrada");
 		}else {
-			clientes.add(c);
+			clientes.add(novoCliente);
 			System.out.println("Cliente cadastrado com sucesso");
 		}
 	}
 	
-	public void removerCliente(Cliente c) {
-		if(clientes.contains(c)) {
-			clientes.remove(c);
+	public void removerCliente(Cliente removerSelecionado) {
+		if(clientes.contains(removerSelecionado)) {
+			clientes.remove(removerSelecionado);
 			System.out.println("Cliente removido com sucesso");
 		}else
-			System.out.println("Cliente n�o localizada");
+			System.out.println("Cliente não localizada");
 	}
+	
+	public void listarClientes() {
+        if (clientes.isEmpty()) {
+            System.out.println("Nenhum cliente cadastrado.");
+        } else {
+        	System.out.println("lista de Clientes");
+            for (Cliente cliente : clientes) {
+                System.out.println(cliente);
+            }
+        }
+    }
 	
 	public Cliente localizarClientePorCpf(String cpf) {
 		for (Cliente objetoDeBusca : clientes) {

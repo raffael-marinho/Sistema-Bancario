@@ -19,9 +19,11 @@ public static void main(String[] args) {
 		while(sair) {
 			System.out.println("\n\n\nDigite a opcao desejada:\n"
 					+ "\n1 - Cadastro de cliente;\n"
-					+ "2 - Remover cliente\n"
-					+ "3 - Opcoes de cliente\n"
-					+ "4 - Para sair\n\n\n");
+					+ "2 - Listar os clientes cadastrados\n"
+					+ "3 - consultar clientepor CPF\n"
+					+ "4 - Opcoes de cliente\n"
+					+ "5 - Remover cliente\n"
+					+ "6 - Para sair\n\n\n");
 			opcao = sc.nextInt();
 			
 			switch (opcao) {
@@ -30,7 +32,7 @@ public static void main(String[] args) {
 				break;
 			}
 			case 2: {
-				removerCliente(p, sc);
+				listarClientes(p);
 				break;
 			}
 			case 3: {
@@ -41,6 +43,17 @@ public static void main(String[] args) {
 				break;
 			}
 			case 4: {
+				System.out.println("insira seu cpf");
+				String cpf;
+				cpf = sc.next();
+				p.localizarClientePorCpf(cpf);
+				break;
+			}
+			case 5: {
+				removerCliente(p, sc);
+				break;
+			}
+			case 6: {
 				sair = false;
 				System.out.println("Opcao 4 selecionada");
 				break;
@@ -73,6 +86,10 @@ public static void main(String[] args) {
         } else {
             System.out.println("Cliente não encontrado. \n");
         }
+    }
+	
+	private static void listarClientes(Persistencia p) {
+        p.listarClientes();  
     }
 	
 }
