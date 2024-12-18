@@ -13,7 +13,7 @@ private ArrayList<Cliente> clientes;
 	
 	public void adicionarCliente(Cliente c) {
 		if(clientes.contains(c)) {
-			System.out.println("Cliente j� cadastrada");
+			System.out.println("Cliente já cadastrada");
 		}else {
 			clientes.add(c);
 			System.out.println("Cliente cadastrado com sucesso");

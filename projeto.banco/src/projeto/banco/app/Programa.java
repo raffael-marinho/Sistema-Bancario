@@ -30,15 +30,7 @@ public static void main(String[] args) {
 				break;
 			}
 			case 2: {
-				Cliente temp;
-				String cpf;
-				System.out.println("Insira o seu CPF: ");
-				cpf = sc.next();
-				if(Cliente.validarCPF(cpf)){
-					temp = new Cliente();
-					temp.setCpf(cpf);
-					p.removerCliente(temp);
-				}
+				removerCliente(p, sc);
 				break;
 			}
 			case 3: {
@@ -62,12 +54,24 @@ public static void main(String[] args) {
 	private static void cadastrarCliente(Persistencia p, Scanner sc) {
 		sc.nextLine(); 
     	System.out.print("Insira o CPF: ");
-    	String cpf = sc.nextLine();
-   
-    	if(Cliente.validarCPF(cpf) == true) {
-    		System.out.print("Insira o nome: ");
-    		String nome = sc.nextLine();
+    	String cpf = sc.nextLine();   
+    	System.out.print("Insira o nome: ");
+    	String nome = sc.nextLine();
+    	if(Cliente.validarCPF(cpf) && Cliente.validarNome(nome)) {
     		p.adicionarCliente(new Cliente(cpf, nome));
+        }
+    }
+	
+	private static void removerCliente(Persistencia p, Scanner sc) {
+        sc.nextLine(); 
+        System.out.print("Insira o CPF do cliente a ser removido: ");
+        String cpf = sc.nextLine();
+        Cliente cliente = p.localizarClientePorCpf(cpf);
+        
+        if (cliente != null) {
+            p.removerCliente(cliente);
+        } else {
+            System.out.println("Cliente não encontrado. \n");
         }
     }
 	
