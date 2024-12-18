@@ -109,7 +109,7 @@ public class Conta {
 		if(status && outraConta.isStatus()) {
 			if(quantia <= 0) {
 				System.err.println("Valor invalido para transferencia.");
-			} else if(quantia<=saldo) {
+			} else if(quantia <= saldo) {
 				this.saldo -= quantia;
 				outraConta.saldo += quantia;
 				System.out.println("Transferencia realizada com sucesso!");
