@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import projeto.banco.model.Cliente;
+import projeto.banco.model.Conta;
 import projeto.banco.persistencia.Persistencia;
 
 public class Programa {
@@ -110,22 +111,25 @@ public static void main(String[] args) {
         while (!voltar) {
             try {
             	System.out.println("\n\n\nDigite a opcao desejada:\n"
-    					+ "\n1 - Cadastro de cliente;\n"
-    					+ "2 - Listar os clientes cadastrados\n"
-    					+ "3 - consultar clientepor CPF\n"
-    					+ "4 - Opcoes de cliente\n"
-    					+ "5 - Remover cliente\n"
-    					+ "6 - Para sair\n\n\n");
+    					+ "\n1 - Criar conta bancaria;\n"
+    					+ "2 - Listar as contas cadastradas do cliente\n"
+    					+ "3 - Remover conta\n"
+    					+ "4 - Realizar depósito de uma dada quantia\n"
+    					+ "5 - Realizar saque de uma dada quantia\n"
+    					+ "6 - Efetuar transferência de quantia entre contas\n"
+    					+ "7 - Consultar saldo\n"
+    					+ "8 - Consultar balanço das contas\n"
+    					+ "9 - Para sair\n\n\n");
                        
                 int opcao = sc.nextInt();
 
                 switch (opcao) {
 	                case 1 -> {
-	                    //Conta novaConta = new Conta(cliente.getContas().size() + 1);
-	                    //p.adicionarContaAoCliente(cpf, novaConta);
+	                    Conta novaConta = new Conta(cliente.getContas().size() + 1);
+	                    p.adicionarContaAoCliente(cpf, novaConta);
 	                }                    
-	                //case 2 -> depositarSaldo(cliente, sc);
-                    //case 3 -> saqueSaldo(cliente, sc);
+	                case 2 -> depositarSaldo(cliente, sc);
+                    case 3 -> saqueSaldo(cliente, sc);
                     //case 4 -> transferirSaldo(cliente, sc);
                     //case 5 -> saldoConta(cliente, sc);
                     //case 6 -> saldoContaTotal(cliente, sc);
@@ -140,5 +144,30 @@ public static void main(String[] args) {
             }
         }
 	}
+	//----------------------------------------------------------------------------------------------------------
+	private static void depositarSaldo(Cliente cliente, Scanner scanner) {
+        System.out.print("Digite o número da conta: ");
+       	int numeroConta = scanner.nextInt();       	
+       	Conta conta = cliente.localizarContaPorNumero(numeroConta);
+       	if (conta != null) {
+       		System.out.print("Digite o valor do depósito: \n");
+       		float valor = scanner.nextFloat();
+       		conta.depositar(valor);
+       	} else {
+       		System.out.println("Conta não encontrada. \n");
+       	}
+    }
 	
+	private static void saqueSaldo(Cliente cliente, Scanner scanner) {
+        System.out.print("Digite o número da conta: "); 
+        int numeroConta = scanner.nextInt();
+        Conta conta = cliente.localizarContaPorNumero(numeroConta);
+        if (conta != null) {
+        	System.out.print("Digite o valor do saque: ");
+        	float valor = scanner.nextFloat();
+        	conta.sacar(valor);
+        } else {
+        	System.out.println("Conta não encontrada. \n");
+        }
+    }
 }
