@@ -28,17 +28,15 @@ private ArrayList<Cliente> clientes;
 			System.out.println("Cliente n�o localizada");
 	}
 	
-	public Cliente localizarClientePorCpf(String numero) {
-		Cliente temp = new Cliente();
-		temp.setCpf(numero);
-		
-		if(clientes.contains(temp)) {
-			int index = clientes.indexOf(temp);
-			temp = clientes.get(index);
-			System.out.println(temp);
-			return temp;
-		}
-		return null;
+	public Cliente localizarClientePorCpf(String cpf) {
+		for (Cliente objetoDeBusca : clientes) {
+            if (objetoDeBusca.getCpf().equals(cpf)) {
+            	System.out.println(objetoDeBusca);
+                return objetoDeBusca;
+            }
+        }
+		System.out.println("cliente não encontrado");
+        return null;
 	}
 	
 	public void atualizarCliente(Cliente c) {
