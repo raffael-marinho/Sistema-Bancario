@@ -3,6 +3,7 @@ package projeto.banco.persistencia;
 import java.util.ArrayList;
 
 import projeto.banco.model.Cliente;
+import projeto.banco.model.Conta;
 
 public class Persistencia {
 private ArrayList<Cliente> clientes;
@@ -58,5 +59,40 @@ private ArrayList<Cliente> clientes;
 		}else
 			System.out.println("Cliente não localizado");
 	}
+//----------------------------------------------------------------------------------------------------------------------
+	
+	public void adicionarContaAoCliente(String cpf, Conta conta) {
+        Cliente cliente = localizarClientePorCpf(cpf);
+        if (cliente != null) {
+            cliente.adicionarConta(conta);
+            atualizarCliente(cliente); 
+        } else {
+            System.out.println("Cliente não encontrado.");
+        }
+    }
+    
+    public void removerContaDoCliente(String cpf, int numeroConta) {
+        Cliente cliente = localizarClientePorCpf(cpf);
+        if (cliente != null) {
+            Conta conta = cliente.localizarContaPorNumero(numeroConta);
+            if (conta != null) {
+                cliente.removerConta(conta);
+                atualizarCliente(cliente); 
+            } else {
+                System.out.println("Conta não encontrada.");
+            }
+        } else {
+            System.out.println("Cliente não encontrado.");
+        }
+    }
 
+    public void atualizarContaDoCliente(String cpf, Conta contaAtualizada) {
+        Cliente cliente = localizarClientePorCpf(cpf);
+        if (cliente != null) {
+            cliente.atualizarConta(contaAtualizada);
+            atualizarCliente(cliente); 
+        } else {
+            System.out.println("Cliente não encontrado.");
+        }
+    }
 }
