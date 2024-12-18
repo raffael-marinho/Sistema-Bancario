@@ -46,7 +46,10 @@ public static void main(String[] args) {
 				break;
 			}
 			case 3: {
-				System.out.println("Opcao 3 selecionada");
+				System.out.println("insira seu cpf");
+				String cpf;
+				cpf = sc.next();
+				p.localizarClientePorCpf(cpf);
 				break;
 			}
 			case 4: {

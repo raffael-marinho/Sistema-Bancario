@@ -35,6 +35,7 @@ private ArrayList<Cliente> clientes;
 		if(clientes.contains(temp)) {
 			int index = clientes.indexOf(temp);
 			temp = clientes.get(index);
+			System.out.println(temp);
 			return temp;
 		}
 		return null;
