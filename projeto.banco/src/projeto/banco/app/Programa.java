@@ -160,7 +160,7 @@ public static void main(String[] args) {
                     	voltar = true;
                     	break;
                     }
-                    default -> System.out.println("Opção inválida. \n");
+                    default: System.out.println("Opção inválida. \n");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. \n");
