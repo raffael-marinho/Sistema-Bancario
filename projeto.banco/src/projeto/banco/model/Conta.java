@@ -110,19 +110,19 @@ public class Conta implements Serializable{
 	}
 	
 	public void transferir(Conta outraConta, float quantia) {
-		if(status && outraConta.isStatus()) {
-			if(quantia <= 0) {
-				System.err.println("Valor invalido para transferencia.");
-			} else if(quantia <= saldo) {
-				this.saldo -= quantia;
-				outraConta.saldo += quantia;
-				System.out.println("Transferencia realizada com sucesso!");
-			} else {
-				System.err.println("Saldo insuficiente para realizar a transferencia.");
-			}
-		} else {
-			System.err.println("Operacao nao pode ser realizada, uma das contas ou as duas estão inativas");
-		}
+	    if (status && outraConta.isStatus()) {
+	        if (quantia <= 0) {
+	            System.err.println("Valor invalido para transferencia.");
+	        } else if (quantia <= saldo) {
+	            this.saldo -= quantia; 
+	            outraConta.saldo += quantia; 
+	            System.out.println("Transferencia realizada com sucesso!");
+	        } else {
+	            System.err.println("Saldo insuficiente para realizar a transferencia.");
+	        }
+	    } else {
+	        System.err.println("Operacao nao pode ser realizada, uma das contas ou as duas estão inativas");
+	    }
 	}
 	
 	public void saldoTotal(Conta consultaSaldo, float quantia) {    	

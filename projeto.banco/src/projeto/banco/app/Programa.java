@@ -128,6 +128,7 @@ public static void main(String[] args) {
 	                case 1: {
 	                    Conta novaConta = new Conta(cliente.getContas().size() + 1);
 	                    p.adicionarContaAoCliente(cpf, novaConta);
+	                    break;
 	                }                    
 	                case 2: {
 	                	depositarSaldo(cliente, sc);
@@ -138,7 +139,7 @@ public static void main(String[] args) {
                     	break;
                     }
                     case 4: {
-                    	transferirSaldo(cliente, sc);
+                    	transferirSaldo(cliente,p , sc);
                     	break;
                     }
                     case 5: {
@@ -196,23 +197,33 @@ public static void main(String[] args) {
         }
     }
 	
-	private static void transferirSaldo(Cliente cliente, Scanner scanner) {
-        System.out.print("Digite o número da sua conta: ");
-        int numeroContaOrigem = scanner.nextInt();
-        System.out.print("Digite o número da conta de destino: ");
-        int numeroContaDestino = scanner.nextInt();
-        
-        Conta contaOrigem = cliente.localizarContaPorNumero(numeroContaOrigem);
-        Conta contaDestino = cliente.localizarContaPorNumero(numeroContaDestino);
-        
-        if (contaOrigem != null && contaDestino != null) {
-        	System.out.print("Digite o valor da transferência: ");
-        	float valor = scanner.nextFloat();
-        	contaOrigem.transferir(contaDestino, valor);
-        } else {
-        	System.out.println("Conta(s) não encontrada(s).");
-        }
-    }
+	private static void transferirSaldo(Cliente cliente, Persistencia p, Scanner scanner) {
+	    System.out.print("Digite o número da sua conta: ");
+	    int numeroContaOrigem = scanner.nextInt();
+	    System.out.print("Digite o CPF do destinatário: ");
+	    String cpfDestinatario = scanner.next();  
+
+	    Conta contaOrigem = cliente.localizarContaPorNumero(numeroContaOrigem);
+
+	    Cliente destinatario = p.localizarClientePorCpf(cpfDestinatario);  
+	    if (destinatario != null) {
+	        System.out.print("Digite o número da conta do destinatário: ");
+	        int numeroContaDestino = scanner.nextInt();
+	        Conta contaDestino = destinatario.localizarContaPorNumero(numeroContaDestino);
+
+	        if (contaOrigem != null && contaDestino != null) {
+	            System.out.print("Digite o valor da transferência: ");
+	            float valor = scanner.nextFloat();
+	            contaOrigem.transferir(contaDestino, valor);
+	        } else {
+	            System.out.println("Conta(s) não encontrada(s).");
+	        }
+	    } else {
+	        System.out.println("Cliente destinatário não encontrado.");
+	    }
+	}
+
+
 	
 	private static void saldoConta(Cliente cliente, Scanner scanner) {
         System.out.print("Digite o número da conta: "); 
