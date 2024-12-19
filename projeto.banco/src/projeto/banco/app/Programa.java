@@ -52,11 +52,12 @@ public static void main(String[] args) {
 			}
 			case 6: {
 				sair = false;
-				System.out.println("Opcao 4 selecionada");
+				System.out.println("Saindo...");
 				break;
 			}
 			default:
-				throw new IllegalArgumentException("Unexpected value: " + opcao);
+				System.out.println("Opção invalida!");
+				
 			}
 		}
 	}
@@ -112,13 +113,13 @@ public static void main(String[] args) {
             try {
             	System.out.println("\n\n\nDigite a opcao desejada:\n"
     					+ "\n1 - Criar conta bancaria;\n"
-    					+ "2 - Listar as contas cadastradas do cliente\n"
-    					+ "3 - Remover conta\n"
-    					+ "4 - Realizar depósito de uma dada quantia\n"
-    					+ "5 - Realizar saque de uma dada quantia\n"
-    					+ "6 - Efetuar transferência de quantia entre contas\n"
-    					+ "7 - Consultar saldo\n"
-    					+ "8 - Consultar balanço das contas\n"
+    					+ "2 - Realizar deposito\n"
+    					+ "3 - Sacar\n"
+    					+ "4 - Transferir para outras contas\n"
+    					+ "5 - consultar saldo em conta\n"
+    					+ "6 - consultar saldo em todas as contas\n"
+    					+ "7 - Consultar contas\n"
+    					+ "8 - Remover contas\n"
     					+ "9 - Para sair\n\n\n");
                        
                 int opcao = sc.nextInt();

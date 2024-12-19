@@ -1,9 +1,12 @@
 package projeto.banco.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Conta {
+public class Conta implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private Integer numeroDaConta;
 	private float saldo;
 	private LocalDateTime dataAbertura;
@@ -14,28 +17,12 @@ public class Conta {
 	}
 	
 	public Conta(Integer numero) {
-		this.numeroDaConta = numeroDaConta;
+		this.numeroDaConta = numero;
 		this.saldo = 0f;
 		this.dataAbertura = LocalDateTime.now();
 		this.status = true;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(numeroDaConta);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Conta other = (Conta) obj;
-		return Objects.equals(numeroDaConta, other.numeroDaConta);
-	}
 
 	public Integer getNumeroDaConta() {
 		return numeroDaConta;
@@ -69,6 +56,23 @@ public class Conta {
 		this.status = status;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(numeroDaConta);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Conta other = (Conta) obj;
+		return Objects.equals(numeroDaConta, other.numeroDaConta);
+	}
+	
 	@Override
 	public String toString() {
 		return "Conta [numeroDaConta=" + numeroDaConta + ", saldo=" + saldo + ", dataAbertura=" + dataAbertura
@@ -120,4 +124,12 @@ public class Conta {
 			System.err.println("Operacao nao pode ser realizada, uma das contas ou as duas estão inativas");
 		}
 	}
+	
+	public void saldoTotal(Conta consultaSaldo, float quantia) {    	
+   	 if (status && consultaSaldo.isStatus()) {
+   		 saldo += quantia;
+   	 } else {
+   	        System.out.println("Operação não pode ser realizada entre contas desativadas.");
+   	 }
+   }
 }
