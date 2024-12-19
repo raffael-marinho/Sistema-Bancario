@@ -119,6 +119,10 @@ public class Cliente implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Cliente [cpf=" + cpf + ", nome=" + nome + ", contas=" + contas + "]";
+		return "Cliente "
+				+ "[cpf= " + cpf 
+				+ " nome= " + nome 
+				+ " contas= " + contas 
+				;
 	}
 }

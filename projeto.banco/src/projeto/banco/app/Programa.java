@@ -22,7 +22,7 @@ public static void main(String[] args) {
 			System.out.println("\n\n\nDigite a opcao desejada:\n"
 					+ "\n1 - Cadastro de cliente;\n"
 					+ "2 - Listar os clientes cadastrados\n"
-					+ "3 - consultar clientepor CPF\n"
+					+ "3 - Consultar cliente por CPF\n"
 					+ "4 - Opcoes de cliente\n"
 					+ "5 - Remover cliente\n"
 					+ "6 - Para sair\n\n\n");
@@ -42,7 +42,7 @@ public static void main(String[] args) {
 				break;
 			}
 			case 4: {
-				System.out.println("Menu cliente");
+				System.out.println("Menu cliente: ");
 				menuCliente(p, sc);
 				break;
 			}
@@ -91,7 +91,7 @@ public static void main(String[] args) {
     }
 	
 	private static void localizarClientePorCpf(Persistencia p, Scanner sc) {
-		System.out.println("insira seu cpf");
+		System.out.println("Insira seu cpf");
 		String cpf;
 		cpf = sc.next();
 		p.localizarClientePorCpf(cpf); 
@@ -112,12 +112,12 @@ public static void main(String[] args) {
         while (!voltar) {
             try {
             	System.out.println("\n\n\nDigite a opcao desejada:\n"
-    					+ "\n1 - Criar conta bancaria;\n"
+    					+ "\n1 - Criar conta bancaria\n"
     					+ "2 - Realizar deposito\n"
     					+ "3 - Sacar\n"
     					+ "4 - Transferir para outras contas\n"
-    					+ "5 - consultar saldo em conta\n"
-    					+ "6 - consultar saldo em todas as contas\n"
+    					+ "5 - Consultar saldo em conta\n"
+    					+ "6 - Consultar saldo em todas as contas\n"
     					+ "7 - Consultar contas\n"
     					+ "8 - Remover contas\n"
     					+ "9 - Para sair\n\n\n");

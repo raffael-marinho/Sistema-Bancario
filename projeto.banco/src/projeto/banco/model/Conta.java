@@ -75,8 +75,12 @@ public class Conta implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Conta [numeroDaConta=" + numeroDaConta + ", saldo=" + saldo + ", dataAbertura=" + dataAbertura
-				+ ", status=" + status + "]";
+		return "\n"
+				+ "numero da Conta= " + numeroDaConta 
+				+ " saldo= " + saldo 
+				+ " data de abertura= " + dataAbertura
+				+ " status= " + status
+				;
 	}
 	
 	public void depositar(float quantia) {
